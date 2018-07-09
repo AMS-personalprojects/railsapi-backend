@@ -20,6 +20,14 @@ end
 	})
 end
 
+5.times  do
+	User.create({
+		name: Faker::GameOfThrones.character,
+		email: Faker::Internet.email,
+		password_digest: Faker::Internet.password,
+	})
+end
+
 # FactoryBot.define do
 # 	factory :todo do
 # 	  title { Faker::Lorem.word }
