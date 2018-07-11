@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :set_user, only: [:show, :update, :destroy, :followers, :following, :follow]
+    before_action :set_user, only: [:show, :update, :destroy, :followers, :followings, :follow]
 
     # GET /users
     def index
@@ -21,6 +21,7 @@ class UsersController < ApplicationController
     # PUT /users/:id
     def update
         @user.update(user_params)
+        @user.follow(User.find(params[:follow]))
         head :no_content
     end
 
@@ -41,16 +42,6 @@ class UsersController < ApplicationController
     def followings
         json_response(@user.follows)
     end
-
-    # POST /users/:id/follow
-    # PUT /users/:id/follow
-    # http PUT :3000/users/:id/follow/:id
-    def follow 
- 
-        @user.follow(User.find(params[:id]))
-        json_response(@user.follows)
-    end
-
 
     private
 

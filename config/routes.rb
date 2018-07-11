@@ -5,12 +5,15 @@ Rails.application.routes.draw do
   end
   
   resources :users do
+
+    put 'follow'
+
     member do 
       get 'followers'
-      get 'following'
+      get 'followings'
     end
     
-    resources :follow  
+    # resources :follow, :only => [:update]   
     
   end 
 
