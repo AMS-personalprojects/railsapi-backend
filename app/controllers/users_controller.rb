@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :set_user, only: [:show, :update, :destroy, :followers, :followings, :follow]
+    before_action :set_user, only: [:show, :update, :destroy, :followers, :followings]
 
     # GET /users
     def index
@@ -20,8 +20,14 @@ class UsersController < ApplicationController
 
     # PUT /users/:id
     def update
+        # user -> 1 brand -> !=1 
+        if (params[:is_user] == 1)
+            @user.follow(User.find(params[:follow]))
+        else
+            @user.follow(Brand.find(params[:follow]))
+        end
         @user.update(user_params)
-        @user.follow(User.find(params[:follow]))
+        
         head :no_content
     end
 
@@ -32,13 +38,11 @@ class UsersController < ApplicationController
     end
 
     # GET /users/:id/followers
-    # http :3000/users/7/followers
     def followers
         json_response(@user.followers)
     end
 
     # GET /users/:id/following
-    # http :3000/users/2/following
     def followings
         json_response(@user.follows)
     end
@@ -46,8 +50,6 @@ class UsersController < ApplicationController
     private
 
         def user_params
-            # whitelist params
-            #should password be allowed?
             params.permit(:name, :email, :password_digest)
         end
 

@@ -1,6 +1,6 @@
 class BrandsController < ApplicationController
 
-    before_action :set_brand, only: [:show, :update, :destroy]
+    before_action :set_brand, only: [:show, :update, :destroy, :followers]
 
     # GET /brands
     def index
@@ -29,6 +29,11 @@ class BrandsController < ApplicationController
     def destroy
         @brand.destroy
         head :no_content
+    end
+
+    # GET /brands/:id/followers
+    def followers
+        json_response(@brand.followers)
     end
 
     private
