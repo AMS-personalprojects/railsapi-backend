@@ -4,6 +4,17 @@ Rails.application.routes.draw do
     resources :products 
   end
   
-  resources :users 
+  resources :users do
+    member do 
+      get 'followers'
+      get 'following'
+    end
+    
+    resources :follow  
+    
+  end 
+
 end
+
+
 

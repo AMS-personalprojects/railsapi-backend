@@ -25,7 +25,7 @@ gem 'puma', '~> 3.11'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
-###########################################################
+############### add by me andersonms1 #######################################
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'
 end
@@ -53,8 +53,9 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 
-  # add by me
+  # add by me andsersonms1
   gem 'faker'
+  gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 end
 
 

@@ -31,7 +31,6 @@ class BrandsController < ApplicationController
         head :no_content
     end
 
-
     private
 
         def brand_params
