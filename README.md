@@ -119,12 +119,7 @@ http GET :3000/users
 
 #### Seguindo outro usuário
 
-Para seguir outro usuário use o mesmo processo utilizado para realizar o update. Porem, somente as variáveis **follow** e **is_user** devem ser atribuídas.
-
-
-is_user -> identicador do tipo de classe que se deseja seguir.
-
-follow -> id da classes que se deseja seguir. 
+Para seguir outro usuário use o mesmo processo utilizado para realizar o update. Porem, somente as variáveis **follow** e **is_user** devem ser atribuídas. is_user -> identicador do tipo de classe que se deseja seguir. follow -> id da classes que se deseja seguir. 
 
 ```shell
 http PUT :3000/users/1/ is_user=1 follow=2 
