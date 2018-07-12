@@ -7,16 +7,24 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-10.times  do
+3.times  do
 	Brand.create({
 		name: Faker::StarWars.character,
 	})
 end
 
-10.times do 
+3.times do 
 	Product.create({
 		name: Faker::Lorem.word,
-		brand_id: nil,
+		brand_id: 1,
+	})
+end
+
+3.times  do
+	User.create({
+		name: Faker::GameOfThrones.character,
+		email: Faker::Internet.email,
+		password_digest: Faker::Internet.password,
 	})
 end
 
