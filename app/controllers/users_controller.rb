@@ -20,12 +20,18 @@ class UsersController < ApplicationController
 
     # PUT /users/:id
     def update
-        # user -> 1 brand -> !=1 
-        if (params[:is_user] == 1)
+
+        if (params[:is_user].to_s == "1")    
+
             @user.follow(User.find(params[:follow]))
-        else
+
+        elsif (params[:is_user].to_s == "0")
+            
             @user.follow(Brand.find(params[:follow]))
+            
         end
+
+
         @user.update(user_params)
         
         head :no_content
@@ -56,5 +62,15 @@ class UsersController < ApplicationController
         def set_user
             @user = User.find(params[:id])
         end
+
+        # def permit_is_user
+        #     params.permit(:is_user)
+        # end
+
+        # def permit_follow
+        #     params.permit(:follow)
+        # end
+
+        
 
 end
